@@ -1,16 +1,16 @@
-{% extends "main.html" %}
+<div style="position: absolute; top: 50%;left: 50%;">
+    {% block header  %}
+    <h1><b>LOGIN PAGE</b></h1>
+    {% endblock %}
 
-{% block header  %}
-<h1><b>LOGIN PAGE</b></h1>
-{% endblock %}
-
-{% block column_2 %}
-    <form method="post">
-        {% for field in login_form %}
-        {{field.label}}{{field}}{{field.errors}}
-        {% endfor %}
-        <p>
-            <input type="submit">
-        </p>
-    </form>
-{% endblock %}
+    {% block column %}
+        <form method="post">
+            {% for field in login %}
+            {{field.label}}{{field}}{{field.errors}}
+            {% endfor %}
+            <p>
+                <input type="submit">
+            </p>
+        </form>
+    {% endblock %}
+</div>

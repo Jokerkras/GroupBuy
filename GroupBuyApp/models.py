@@ -7,6 +7,9 @@ class Lot(models.Model):
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     ended = models.DateTimeField(auto_now=True)
+    minUsers = models.IntegerField(default=0)
+    maxUsers = models.IntegerField(default=1000000)
+
 
     class Meta:
         ordering = ('name',)

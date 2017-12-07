@@ -13,7 +13,7 @@ from GroupBuyApp.models import *
 
 def lots_list(request):
     lots = Lot.objects.all()
-    return render(request, 'main.html', {
+    return render(request, 'listBuy.html', {
         "lots": lots
     })
 

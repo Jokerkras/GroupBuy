@@ -1,0 +1,147 @@
+﻿body{
+	min-width:1100px;
+	font-size:18px;
+	font-family:Calibri, sans-serif;
+}
+
+.page{
+	background-color:#F5F5F5;
+	width:1100px;
+	margin-left:auto;
+	margin-right:auto;
+	border:1px solid #D3D3D3;
+}
+
+a{
+	margin: 2px 10px;	
+	float:right;
+}
+
+.prof{	
+}
+
+/*Оформление хедера*/
+
+.logo{
+	float:right;
+	margin:45px;
+}
+
+.header-img-home{
+	clear:both;
+	width:1100px;
+	height:200px;
+	background: url("../images/home-bg.jpg") no-repeat center;
+}
+
+/*Нижний блок*/
+
+footer,
+.down-block{
+	clear: both;
+	border-top:1px solid #D3D3D3;
+	font-size:16px;
+	padding:30px;
+}
+
+.content{
+	width:100%;
+	text-align:left;
+}
+
+.site-footer{
+	padding:0px 20px;
+	font-size:18px;
+	color:#aaaaaa;
+}
+
+.copyrights{
+	padding:0px;
+	margin: 0px;
+	text-align:right;
+	font-size:15px;
+}
+
+ .img-with-capt {
+	width:200px;
+	height:110px;
+	margin-bottom:30px;
+  position: relative;
+  display: table;
+  float:left;
+}
+
+ .img-with-capt img{
+	width:100px;
+	height:80px;
+	 
+ }
+
+.foto{
+	width:300px;
+	height:210px;
+    float:left;
+	margin-bottom:30px;
+}
+
+.box-text{
+	font-size:25px;
+	line-height:45px;
+    float:left;
+}
+
+.text-left{
+	margin-left:50px;
+}
+
+.text-center{
+	margin:0 270px;
+}
+
+.data{
+	font-size:18px;
+	color:#567d66;
+}
+
+input{
+	font-size:16px;
+}
+
+.button{
+	margin-left:70px;
+}
+
+.buttonCreate{
+	margin:25px 0;
+	font-size:18px;
+}
+
+.textbox{
+	margin-left:20px;
+	font-size:16px;	
+}
+
+.textboxCount{		
+	width:105px;
+}
+
+.textboxCount1{	
+	margin-left:14px;	
+	width:105px;
+}
+
+.textboxCount2{	
+	margin-left:7px;	
+	width:105px;
+}
+
+.content-box{
+	box-sizing: border-box;
+	margin:40px 40px 60px 40px;
+}
+
+.cont{
+	font-size:25px;
+	font-weight:bold;
+	margin: 25px 0px;
+}

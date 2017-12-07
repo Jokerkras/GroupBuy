@@ -11,16 +11,19 @@ from django.contrib.auth import login as django_login
 
 from GroupBuyApp.models import *
 
+
 def lots_list(request):
     lots = Lot.objects.all()
     return render(request, 'listBuy.html', {
         "lots": lots
     })
 
+
 class LoginForm(forms.Form):
     username = forms.CharField(required=True)
     password = forms.CharField(
         required=True, widget=forms.PasswordInput)
+
 
 def login(request):
     if request.method == 'POST':
@@ -44,6 +47,7 @@ def login(request):
             request,
             'login.html',
             {'login': form})
+
 
 def main(request):
     return render(request, 'main.html')

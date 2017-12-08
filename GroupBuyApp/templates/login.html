@@ -1,4 +1,13 @@
-<div style="position: absolute; top: 40%;left: 40%;">
+{% load staticfiles  %}
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="shortcut icon" href="static/images/favicon.ico">
+		<link rel="stylesheet" href="static/css/style.css">
+		<title>GroupBuy</title>
+	</head>
+<body>
+	<div style="position: absolute; top: 40%;left: 40%;">
     {% block header  %}
     <h1><b>LOGIN PAGE</b></h1>
     {% endblock %}
@@ -13,4 +22,6 @@
             </p>
         </form>
     {% endblock %}
-</div>
+	</div>
+</body>
+</html>

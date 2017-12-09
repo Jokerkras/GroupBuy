@@ -19,6 +19,27 @@ def lots_list(request):
     })
 
 
+def lot_details(request):
+    lot_id = request.GET['id']
+    lot = Lot.objects.get(pk=lot_id)
+    author = Account.objects.get(pk=lot.account.user_id)
+    return render(
+        request,
+        'buyInfo.html',
+        {
+            'lot': lot,
+            'author': author
+        }
+    )
+
+
+def lot_create(request):
+    if request.method == 'POST':
+
+    else:
+    return render(request, 'create.html')
+
+
 class LoginForm(forms.Form):
     username = forms.CharField(required=True)
     password = forms.CharField(

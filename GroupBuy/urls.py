@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/', views.login),
     url(r'^main/', views.lots_list),
-    url(r'^listBuy/', views.lots_list)
+    url(r'^listBuy/', views.lots_list),
+    url(r'^lot', views.lot_details)
 ]

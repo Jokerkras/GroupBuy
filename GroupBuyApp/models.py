@@ -10,6 +10,7 @@ class Account(models.Model):
     email = models.CharField(max_length=255)
     timestamp = models.DateTimeField()
     cash = models.DecimalField(max_digits=10, decimal_places=2)
+    reputation = models.IntegerField(default=0)
 
     def __str__(self):
         return 'Username: %s; email: %s' % (
@@ -24,5 +25,6 @@ class Lot(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     ended = models.DateTimeField(auto_now=True)
     minUsers = models.IntegerField(default=0)
+    hasMax = models.BooleanField(default=False)
     maxUsers = models.IntegerField(default=1000000)
     usersJoin = models.IntegerField(default=0)

@@ -25,15 +25,14 @@
 		</div>
 		<div class="text-left">
 			 "{{ lot.name }}"<br>
-			 Количество участников:
-			 <br>
+			 Количество участников: {{ lot.usersJoin }}<br>
 			 Минимальное: {{ lot.minUsers }}<br>
-			 Максимальное: {{ lot.maxUsers }}
-			 <br>
+            {% if lot.hasMax %}
+			 Максимальное: {{ lot.maxUsers }}<br>
+            {% endif %}
 			 Цена: {{ lot.price }}<br>
 			<input type="button" value="Присоединиться" class="buttonCreate">
-			
-			<!-- if autor-->
+
 			<input type="button" value="Завершить" class="buttonCreate">
 			<input type="button" value="Удалить" class="buttonCreate">
 		</div>

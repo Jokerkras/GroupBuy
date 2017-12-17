@@ -62,20 +62,19 @@ footer,
 	font-size:15px;
 }
 
- .img-with-capt {
+.img-with-capt {
 	width:200px;
 	height:110px;
 	margin-bottom:30px;
-  position: relative;
-  display: table;
-  float:left;
+    position: relative;
+    display: table;
+    float:left;
 }
 
- .img-with-capt img{
+.img-with-capt img{
 	width:100px;
 	height:80px;
-	 
- }
+}
 
 .foto{
 	width:300px;
@@ -111,8 +110,12 @@ input{
 	margin-left:70px;
 }
 
+.go{
+	margin-left:70px;
+}
+
 .buttonCreate{
-	margin:25px 0;
+	margin:25px 10px 25px 0;
 	font-size:18px;
 }
 
@@ -144,4 +147,8 @@ input{
 	font-size:25px;
 	font-weight:bold;
 	margin: 25px 0px;
+}
+
+.lot{
+	border-top:1px solid #D3D3D3;
 }

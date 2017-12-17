@@ -33,13 +33,6 @@ def lot_details(request):
     )
 
 
-def lot_create(request):
-    if request.method == 'POST':
-
-    else:
-    return render(request, 'create.html')
-
-
 class LoginForm(forms.Form):
     username = forms.CharField(required=True)
     password = forms.CharField(

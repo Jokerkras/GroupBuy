@@ -5,7 +5,7 @@ from django.db import models
 
 
 class Account(models.Model):
-    user = models.OneToOneField(User, default=1)
+    user = models.OneToOneField(User, default=1, on_delete=models.CASCADE)
     username = models.CharField(max_length=255, unique=True)
     email = models.CharField(max_length=255)
     timestamp = models.DateTimeField()
@@ -18,7 +18,7 @@ class Account(models.Model):
 
 class Lot(models.Model):
     name = models.CharField(max_length=50)
-    account = models.ForeignKey(Account, default=1)
+    account = models.ForeignKey(Account, default=1, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)

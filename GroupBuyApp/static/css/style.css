@@ -17,9 +17,6 @@ a{
 	float:right;
 }
 
-.prof{	
-}
-
 /*Оформление хедера*/
 
 .logo{
@@ -111,7 +108,7 @@ input{
 }
 
 .go{
-	margin-left:70px;
+	margin:0px;
 }
 
 .buttonCreate{
@@ -150,5 +147,8 @@ input{
 }
 
 .lot{
+	box-sizing: border-box;
+	padding-top: 35px;
 	border-top:1px solid #D3D3D3;
+	margin:40px 50px 40px 40px;
 }

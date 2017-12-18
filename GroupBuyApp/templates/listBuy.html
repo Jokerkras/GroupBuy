@@ -19,16 +19,16 @@
 	<div class="content-box">
 		<div class="cont">Список закупок</div>
         {% for lot in lots %}
-			<div class="content-box lot">
+			<div class="lot">
                 <div class="img-with-capt">
                     <img src="{% static 'images/buy.jpg' %}"/>
                 </div>
                 <div class="text-left">
                      "{{ lot.name }}" <br>
+                    <a href="/lot?id={{lot.id}}"><input type="button" value="Перейти к закупке" class="buttonCreate go"></a>
                      Цена: {{ lot.price }} <br>
-                    <a href="/lot?id={{lot.id}}"><input type="button" value="Перейти к закупке" class="buttonCreate"></a>
-                    <br>
                 </div>
+				<br>
 			</div>
         {% endfor %}
 	</div>

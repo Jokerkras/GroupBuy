@@ -15,12 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+
 from GroupBuyApp import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^login/', views.login),
     url(r'^main/', views.lots_list),
     url(r'^listBuy/', views.lots_list),
-    url(r'^lot', views.lot_details)
+    url(r'^lot', views.lot_details),
+    url(r'^login', views.login),
+    url(r'^logout/', views.logout),
+
+
 ]

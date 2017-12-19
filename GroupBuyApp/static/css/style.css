@@ -130,6 +130,17 @@ input{
 	width:105px;
 }
 
+.login {
+	width: 500px;
+	text-align: center;
+}
+
+.log-in-form {
+  border: 1px solid #cacaca;
+  padding: 1rem;
+  border-radius: 0;
+}
+
 .textboxCount2{	
 	margin-left:7px;	
 	width:105px;
@@ -138,6 +149,7 @@ input{
 .content-box{
 	box-sizing: border-box;
 	margin:40px 40px 60px 40px;
+	border-bottom-width: 5px;
 }
 
 .cont{

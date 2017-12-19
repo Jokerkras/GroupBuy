@@ -1,37 +1,9 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 
-from django.shortcuts import render
 from django.shortcuts import render_to_response, redirect
 from django.contrib import auth
 from django.template.context_processors import csrf
 
-from GroupBuyApp.models import *
-
-
-def lots_list(request):
-    return render(request, 'listBuy.html', {
-        "lots": Lot.objects.all(), 'username': auth.get_user(request).username
-    })
-
-
-def lot_details(request):
-    lot_id = request.GET['id']
-    lot = Lot.objects.get(pk=lot_id)
-    author = Account.objects.get(pk=lot.account.user_id)
-    return render(
-        request,
-        'buyInfo.html',
-        {
-            'lot': lot,
-            'author': author,
-            'username': auth.get_user(request).username
-        }
-    )
-
-
-def main(request):
-    return render(request, 'main.html')
 
 def login(request):
     args = {}
@@ -42,7 +14,7 @@ def login(request):
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            return redirect('/listBuy')
+            return redirect('/')
         else:
             args['login_error'] = "Пользователь не найден"
             return render_to_response('login.html', args)
@@ -52,4 +24,4 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect('/login')
+    return redirect('/')

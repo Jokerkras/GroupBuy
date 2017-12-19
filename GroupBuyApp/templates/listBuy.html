@@ -1,25 +1,38 @@
 ﻿{% load staticfiles  %}
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<link rel="shortcut icon" href="{% static 'images/favicon.ico'%}">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/foundation.css' %}">
 		<title>GroupBuy</title>
 	</head>
 <body>
 <div class="page">
-	<header>
-	<a href="/login.html"><img alt="" src="{% static 'images/out.png' %}"></a>
-	<a href="/create.html"><img alt="" src="{% static 'images/new.png' %}"></a>
-	<a href="/profile.html" class="prof"><img alt="" src="{% static 'images/prof.png' %}"></a>
-	<div class="header-img-home"></div>
-	</header>
+{#	<header>#}
+{#	<a href="/login.html"><img alt="" src="{% static 'images/out.png' %}"></a>#}
+{#	<a href="/create.html"><img alt="" src="{% static 'images/new.png' %}"></a>#}
+{#	<a href="/profile.html" class="prof"><img alt="" src="{% static 'images/prof.png' %}"></a>#}
+{#	<div class="header-img-home"></div>#}
+{#	</header>#}
+    <div class="top-bar">
+        <section class="top-bar-right">
+            <ul class="right">
+                {% if username %}
+                    <li><a href="/logout">Выйти({{ username }})</a></li>
+                {% else %}
+                    <li><a href="/login">Войти</a></li>
+                {% endif %}
+            </ul>
+        </section>
+    </div>
+
 
 	<div class="content-box">
 		<div class="cont">Список закупок</div>
         {% for lot in lots %}
-            <div>
+            <div class="content-box">
                 <div class="img-with-capt">
                     <img src="{% static 'images/buy.jpg' %}"/>
                 </div>

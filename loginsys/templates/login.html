@@ -1,15 +1,13 @@
-{% load staticfiles  %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/foundation.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
-<body class="login">
-            <form class="log-in-form" method="post">
-                <h4 class="text-center">Войдите в свой аккаунт</h4>
+<body>
+        <div class="align-left">
+            <form method="post">
                 {% csrf_token %}
                 <label for="username">Имя пользователя</label>
                 <input type="text" name="username" id="username">
@@ -20,6 +18,6 @@
                 {% endif %}
                 <input class="button" type="submit" value="Войти">
             </form>
-
+        </div>
 </body>
 </html>

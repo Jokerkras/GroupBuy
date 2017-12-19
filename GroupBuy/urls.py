@@ -22,5 +22,7 @@ urlpatterns = [
     url(r'^login/', views.login),
     url(r'^main/', views.lots_list),
     url(r'^listBuy/', views.lots_list),
-    url(r'^lot', views.lot_details)
+    url(r'^lot', views.lot_details),
+    url(r'^profile', views.profile_details),
+    url(r'^logout/', views.logout)
 ]

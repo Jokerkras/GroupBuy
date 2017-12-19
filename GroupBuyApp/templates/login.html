@@ -1,27 +1,25 @@
 {% load staticfiles  %}
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<link rel="shortcut icon" href="{% static 'images/favicon.ico'%}">
-		<link rel="stylesheet" href="{% static 'css/style.css' %}">
-		<title>GroupBuy</title>
-	</head>
-<body>
-	<div style="position: absolute; top: 40%;left: 40%;">
-    {% block header  %}
-    <h1><b>LOGIN PAGE</b></h1>
-    {% endblock %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/foundation.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body class="login">
+            <form class="log-in-form" method="post">
+                <h4 class="text-center">Войдите в свой аккаунт</h4>
+                {% csrf_token %}
+                <label for="username">Имя пользователя</label>
+                <input type="text" name="username" id="username">
+                <label for="password">Пароль</label>
+                <input type="password" name="password" id="password">
+                {% if login_error %}
+                    <label class="errors">{{ login_error }}</label>
+                {% endif %}
+                <input class="button" type="submit" value="Войти">
+            </form>
 
-    {% block column %}
-        <form method="post">
-            {% for field in login %}
-            {{field.label}}{{field}}{{field.errors}}
-            {% endfor %}
-            <p>
-                <input type="submit">
-            </p>
-        </form>
-    {% endblock %}
-	</div>
 </body>
 </html>

@@ -5,9 +5,9 @@ import datetime
 
 from django import forms
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.contrib.auth import authenticate
-from django.contrib.auth import login as django_login
+from django.shortcuts import render_to_response, redirect
+from django.contrib import auth
+from django.template.context_processors import csrf
 
 from GroupBuyApp.models import *
 
@@ -15,7 +15,8 @@ from GroupBuyApp.models import *
 def lots_list(request):
     lots = Lot.objects.all()
     return render(request, 'listBuy.html', {
-        "lots": lots
+        "lots": lots,
+        'user': auth.get_user(request)
     })
 
 
@@ -28,7 +29,8 @@ def lot_details(request):
         'buyInfo.html',
         {
             'lot': lot,
-            'author': author
+            'author': author,
+            'user': auth.get_user(request)
         }
     )
 
@@ -40,27 +42,38 @@ class LoginForm(forms.Form):
 
 
 def login(request):
-    if request.method == 'POST':
-        login = LoginForm(request.POST)
-        if login.is_valid():
-            user = authenticate(
-                request,
-                username=login.cleaned_data['username'],
-                password=login.cleaned_data['password'])
-            if user is not None:
-                django_login(request, user)
-                return HttpResponse('Login complete!')
-            else:
-                return render(
-                    request,
-                    'login.html',
-                    {login: login})
+    args = {}
+    args.update(csrf(request))
+    if request.POST:
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
+        user = auth.authenticate(username=username, password=password)
+        if user is not None:
+            auth.login(request, user)
+            return redirect('/listBuy')
+        else:
+            args['login_error'] = "Пользователь не найден"
+            return render_to_response('login.html', args)
     else:
-        form = LoginForm()
-        return render(
-            request,
-            'login.html',
-            {'login': form})
+        return render_to_response('login.html', args)
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/listBuy')
+
+
+def profile_details(request):
+    account_id = request.GET['id']
+    account = Account.objects.get(pk=account_id)
+    return render(
+        request,
+        'profile.html',
+        {
+            'account': account,
+            'user': auth.get_user(request)
+        }
+    )
 
 
 def main(request):

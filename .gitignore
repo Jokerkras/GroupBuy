@@ -1,0 +1,4 @@
+.idea/
+*.pyc
+GroupBuyApp/__pycache__/
+GroupBuy/__pycache__/

@@ -108,12 +108,16 @@ input{
 }
 
 .go{
-	margin:0px;
+	margin: 15px 0px;
 }
 
 .buttonCreate{
 	margin:25px 10px 25px 0;
 	font-size:18px;
+}
+
+.margR{
+	margin-right: 85px;
 }
 
 .textbox{

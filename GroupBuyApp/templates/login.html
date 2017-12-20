@@ -2,24 +2,32 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico'%}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/foundation.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>GroupBuy</title>
 </head>
-<body class="login">
+<body class="page">
+	<div class="header-img-home"></div>
             <form class="log-in-form" method="post">
-                <h4 class="text-center">Войдите в свой аккаунт</h4>
+                <div class="content-box">
+		        <div class="cont">Войдите в свой аккаунт</div>
                 {% csrf_token %}
                 <label for="username">Имя пользователя</label>
-                <input type="text" name="username" id="username">
-                <label for="password">Пароль</label>
-                <input type="password" name="password" id="password">
+                <input type="text" name="username" id="username"><br>
+                <label class="margR" for="password">Пароль</label>
+                <input type="password" name="password" id="password"><br>
                 {% if login_error %}
-                    <label class="errors">{{ login_error }}</label>
+                    <label class="errors">{{ login_error }}</label><br>
                 {% endif %}
-                <input class="button" type="submit" value="Войти">
+                <input class="go" type="submit" value="Войти">
+                </div>
             </form>
 
+	<footer class="site-footer">
+		<div class="copyrights"><p>lukin_gorlischeva_krasikov</p></div>
+	</footer>
 </body>
 </html>

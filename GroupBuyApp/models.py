@@ -27,7 +27,7 @@ class Lot(models.Model):
     minUsers = models.IntegerField(default=0)
     hasMax = models.BooleanField(default=False)
     maxUsers = models.IntegerField(default=1000000)
-    usersJoin = models.IntegerField(default=0)
+    usersJoin = models.IntegerField(default=1)
     description = models.CharField(max_length=256, default="")
 
     def __str__(self):

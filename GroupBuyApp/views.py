@@ -24,13 +24,22 @@ def lot_details(request):
     lot_id = request.GET['id']
     lot = Lot.objects.get(pk=lot_id)
     author = Account.objects.get(pk=lot.account.user_id)
+    user = auth.get_user(request)
+    if user is not None:
+        try:
+            joined = AccountLot.objects.get(account_id=user.id, lot_id=lot_id) is not None
+        except: joined = False
+
+    else:
+        joined = False
     return render(
         request,
         'buyInfo.html',
         {
             'lot': lot,
             'author': author,
-            'user': auth.get_user(request)
+            'user': auth.get_user(request),
+            'joined': joined
         }
     )
 
@@ -61,6 +70,27 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('/listBuy')
+
+
+def join(request):
+    user = auth.get_user(request)
+    joinedTxt = request.GET['joined']
+    joined = joinedTxt != "True"
+    print(joinedTxt)
+    if user is not None:
+        lot_id = request.GET['id']
+        lot = Lot.objects.get(pk=lot_id)
+        if joined:
+            lot.usersJoin += 1
+            AccountLot.objects.create(account_id=user.id, lot_id=lot_id, time=datetime.now)
+        else:
+            lot.usersJoin -= 1
+            AL = AccountLot.objects.get(account_id=user.id, lot_id=lot_id)
+            AL.delete()
+
+
+
+
 
 
 def profile_details(request):

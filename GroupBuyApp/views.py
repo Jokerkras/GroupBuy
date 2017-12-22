@@ -72,21 +72,38 @@ def logout(request):
     return redirect('/listBuy')
 
 
+def deleteLot(request):
+    lot_id = request.GET['id']
+    lot = Lot.objects.get(pk=lot_id)
+    lot.delete()
+    return redirect('/listBuy')
+
 def join(request):
     user = auth.get_user(request)
     joinedTxt = request.GET['joined']
-    joined = joinedTxt != "True"
-    print(joinedTxt)
+    joined = joinedTxt != 'True'
     if user is not None:
         lot_id = request.GET['id']
         lot = Lot.objects.get(pk=lot_id)
+        author = lot.account
         if joined:
             lot.usersJoin += 1
-            AccountLot.objects.create(account_id=user.id, lot_id=lot_id, time=datetime.now)
+            AccountLot.objects.create(account_id=user.id, lot_id=lot_id, time=datetime.datetime.now())
         else:
             lot.usersJoin -= 1
             AL = AccountLot.objects.get(account_id=user.id, lot_id=lot_id)
             AL.delete()
+
+    return render(
+        request,
+        'buyInfo.html',
+        {
+            'lot': lot,
+            'author': author,
+            'user': auth.get_user(request),
+            'joined': joined
+        }
+    )
 
 
 

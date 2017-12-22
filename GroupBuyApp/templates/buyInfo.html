@@ -36,17 +36,17 @@
 			 <br>
 			 Цена: {{ lot.price }}<br>
             {% if user.is_authenticated and lot.account_id != user.id %}
-                <form action="/join/?id={{ lot.id }}&joined={{ joined }}" method="post">
+                <a href="/join?id={{ lot.id }}&joined={{ joined }}">
                     {% if joined %}
-			            <input type="button" value="Отказаться" class="buttonCreate">
+                        <input type="button" value="Отказаться" class="buttonCreate">
                     {% else %}
                         <input type="button" value="Присоединиться" class="buttonCreate">
                     {% endif %}
-                </form>
+                </a>
 			{% endif %}
 			{% if user.is_authenticated and user.id == lot.account_id  %}
 			<input type="button" value="Завершить" class="buttonCreate">
-			<input type="button" value="Удалить" class="buttonCreate">
+                <a href="/deleteLot?id={{ lot.id }}"><input type="button" value="Удалить" class="buttonCreate"></a>
             {% endif %}
 		</div>
 	</div>

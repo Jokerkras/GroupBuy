@@ -26,5 +26,6 @@ urlpatterns = [
     url(r'^profile', views.profile_details),
     url(r'^logout/', views.logout),
     url(r'^join', views.join),
-    url(r'^deleteLot', views.deleteLot)
+    url(r'^deleteLot', views.deleteLot),
+    url(r'^endLot', views.endLot)
 ]

@@ -34,8 +34,9 @@
 			 Минимальное: {{ lot.minUsers }}<br>
 			 Максимальное: {{ lot.maxUsers }}
 			 <br>
+             Учавствует: {{ lot.usersJoin }}<br>
 			 Цена: {{ lot.price }}<br>
-            {% if user.is_authenticated and lot.account_id != user.id %}
+            {% if user.is_authenticated and lot.account_id != user.id and lot.available%}
                 <a href="/join?id={{ lot.id }}&joined={{ joined }}">
                     {% if joined %}
                         <input type="button" value="Отказаться" class="buttonCreate">
@@ -45,7 +46,9 @@
                 </a>
 			{% endif %}
 			{% if user.is_authenticated and user.id == lot.account_id  %}
-			<input type="button" value="Завершить" class="buttonCreate">
+                {% if lot.available %}
+                    <a href="/endLot?id={{ lot.id }}"><input type="button" value="Завершить" class="buttonCreate"></a>
+                {% endif %}
                 <a href="/deleteLot?id={{ lot.id }}"><input type="button" value="Удалить" class="buttonCreate"></a>
             {% endif %}
 		</div>

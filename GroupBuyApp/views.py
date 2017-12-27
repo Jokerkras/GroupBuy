@@ -78,22 +78,13 @@ def deleteLot(request):
     lot.delete()
     return redirect('/listBuy')
 
-def join(request):
-    user = auth.get_user(request)
-    joinedTxt = request.GET['joined']
-    joined = joinedTxt != 'True'
-    if user is not None:
-        lot_id = request.GET['id']
-        lot = Lot.objects.get(pk=lot_id)
-        author = lot.account
-        if joined:
-            lot.usersJoin += 1
-            AccountLot.objects.create(account_id=user.id, lot_id=lot_id, time=datetime.datetime.now())
-        else:
-            lot.usersJoin -= 1
-            AL = AccountLot.objects.get(account_id=user.id, lot_id=lot_id)
-            AL.delete()
 
+def endLot(request):
+    lot_id = request.GET['id']
+    lot = Lot.objects.get(pk=lot_id)
+    lot.available = False
+    author = lot.account
+    joined = True
     return render(
         request,
         'buyInfo.html',
@@ -105,9 +96,36 @@ def join(request):
         }
     )
 
-
-
-
+def join(request):
+    user = auth.get_user(request)
+    joinedTxt = request.GET['joined']
+    joined = joinedTxt != 'True'
+    if user is not None:
+        account = Account.objects.get(pk=user.id)
+        lot_id = request.GET['id']
+        lot = Lot.objects.get(pk=lot_id)
+        author = lot.account
+        if joined:
+            lot.usersJoin += 1
+            AccountLot.objects.create(account_id=user.id, lot_id=lot_id, time=datetime.datetime.now())
+            account.cash = account.cash - lot.price
+        else:
+            lot.usersJoin -= 1
+            AL = AccountLot.objects.get(account_id=user.id, lot_id=lot_id)
+            AL.delete()
+            account.cash += lot.price
+    lot.save()
+    account.save()
+    return render(
+        request,
+        'buyInfo.html',
+        {
+            'lot': lot,
+            'author': author,
+            'user': auth.get_user(request),
+            'joined': joined
+        }
+    )
 
 
 def profile_details(request):

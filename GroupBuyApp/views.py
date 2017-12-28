@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 import datetime
-
+import random
 from django import forms
 from django.shortcuts import render
 from django.shortcuts import render_to_response, redirect
@@ -122,6 +122,19 @@ def profile_details(request):
         }
     )
 
+def addMoney(request):
+    account = Account.objects.get(pk = auth.get_user(request).id)
+    account.cash += random.randint(100, 1000)
+    account.save()
+    #return redirect('/profile', id=account.user_id)
+    return render(
+        request,
+        'profile.html',
+        {
+            'account': account,
+            'user': auth.get_user(request)
+        }
+    )
 
 def main(request):
     return render(request, 'main.html')

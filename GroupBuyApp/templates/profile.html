@@ -27,8 +27,10 @@
 		</div>
 		<div class="box-text text-left">
 			Баланс: {{ account.cash }}
-			<input type="button" value="Пополнить" class="button"><br>
-			Репутация: {{ account.rate }}<br>
+            <a href="/addMoney">
+			    <input type="button" value="Пополнить" class="button"><br>
+            </a>
+			<br>Репутация: {{ account.rate }}<br>
 			Совершенные покупки: <br>
 		</div>
 	</div>

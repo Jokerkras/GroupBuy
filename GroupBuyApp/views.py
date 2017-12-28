@@ -126,15 +126,8 @@ def addMoney(request):
     account = Account.objects.get(pk = auth.get_user(request).id)
     account.cash += random.randint(100, 1000)
     account.save()
-    #return redirect('/profile', id=account.user_id)
-    return render(
-        request,
-        'profile.html',
-        {
-            'account': account,
-            'user': auth.get_user(request)
-        }
-    )
+    return redirect('/profile?id='+ str(account.user_id))
+
 
 def main(request):
     return render(request, 'main.html')
